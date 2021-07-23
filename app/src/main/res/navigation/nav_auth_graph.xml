@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_auth_graph.xml"
+    app:startDestination="@id/authContainerFragment">
+
+    <fragment
+        android:id="@+id/authContainerFragment"
+        android:name="io.atreydos.rfkeychain.ui.auth.AuthContainerFragment"
+        android:label="fragment_auth_container"
+        tools:layout="@layout/fragment_auth_container">
+        <action
+            android:id="@+id/action_authContainerFragment_to_placeholder"
+            app:destination="@id/placeholderActivityResult" />
+        <action
+            android:id="@+id/action_authContainerFragment_to_authRestoreAccessStep1Fragment"
+            app:destination="@id/authRestoreAccessStep1Fragment" />
+        <action
+            android:id="@+id/action_authContainerFragment_to_authSignUpFragment"
+            app:destination="@id/authSignUpFragment" />
+        <action
+            android:id="@+id/action_authContainerFragment_to_authSignInFragment"
+            app:destination="@id/authSignInFragment" />
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="https://rfkeychain.firebaseapp.com/__/auth/action?mode={action}&amp;oobCode={code}" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/authRestoreAccessStep1Fragment"
+        android:name="io.atreydos.rfkeychain.ui.auth.restore.step1.AuthRestoreAccessStep1Fragment"
+        android:label="fragment_auth_restore_access_step1"
+        tools:layout="@layout/fragment_auth_restore_access_step1">
+        <action
+            android:id="@+id/action_authRestoreAccessStep1Fragment_to_authRestoreAccessStep2Fragment"
+            app:destination="@id/authRestoreAccessStep2Fragment"
+            app:popUpTo="@id/authContainerFragment" />
+        <argument
+            android:name="login"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/authRestoreAccessStep2Fragment"
+        android:name="io.atreydos.rfkeychain.ui.auth.restore.step2.AuthRestoreAccessStep2Fragment"
+        android:label="fragment_auth_restore_access_step2"
+        tools:layout="@layout/fragment_auth_restore_access_step2" />
+
+    <fragment
+        android:id="@+id/authSignUpFragment"
+        android:name="io.atreydos.rfkeychain.ui.auth.signup.AuthSignUpFragment"
+        android:label="fragment_auth_sign_up"
+        tools:layout="@layout/fragment_auth_sign_up">
+        <argument
+            android:name="login"
+            app:argType="string" />
+    </fragment>
+    <fragment android:id="@+id/placeholderActivityResult" />
+    <fragment
+        android:id="@+id/authSignInFragment"
+        android:name="io.atreydos.rfkeychain.ui.auth.signin.AuthSignInFragment"
+        android:label="fragment_auth_sign_in"
+        tools:layout="@layout/fragment_auth_sign_in">
+        <argument
+            android:name="login"
+            app:argType="string" />
+    </fragment>
+</navigation>

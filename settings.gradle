@@ -1,0 +1,3 @@
+rootProject.name = "RF Keychain"
+include ':app'
+enableFeaturePreview("GRADLE_METADATA")
